@@ -1,7 +1,7 @@
-import MainBanner from "@/components/banners/MainBanner";
-import MovieSection from "@/components/movies/MovieSection";
+import MainBanner from "@/components/dashboard/banners/MainBanner";
+import MovieSection from "@/components/dashboard/movies/MovieSection";
 import NavBar from "@/components/navbar/NavBar";
-import Sidebar from "@/components/sidebar/SideBar";
+import Sidebar from "@/components/dashboard/sidebar/SideBar";
 
 const DashboardLayout = () => {
   return (

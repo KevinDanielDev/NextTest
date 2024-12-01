@@ -1,6 +1,6 @@
 // Archivo de barril
 
 export * from "./navbar/NavBar";
-export * from "./sidebar/SideBar";
-export * from "./movies/MovieSection";
-export * from "./banners/MainBanner";
+export * from "./dashboard/sidebar/SideBar";
+export * from "./dashboard/movies/MovieSection";
+export * from "./dashboard/banners/MainBanner";
