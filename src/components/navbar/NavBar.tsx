@@ -5,7 +5,6 @@ const NavBar = () => {
     return (
         <div className="bg-black">
             <div className="navbar px-4 md:px-10 flex items-center">
-                {/* Marca */}
                 <div className="flex-none">
                     <div className="flex flex-col items-start md:items-center">
                         <p className="text-xl text-white font-bold">QUICKBET</p>
@@ -13,7 +12,6 @@ const NavBar = () => {
                     </div>
                 </div>
 
-                {/* Menú en pantallas grandes */}
                 <div className="hidden md:flex flex-1 ml-10">
                     <Link className="btn btn-ghost text-sm text-white" href="/Popular">
                         Popular
@@ -23,7 +21,6 @@ const NavBar = () => {
                     </Link>
                 </div>
 
-                {/* Dropdown para pantallas pequeñas */}
                 <div className="flex md:hidden flex-1 justify-end">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost text-white">
@@ -60,7 +57,6 @@ const NavBar = () => {
                     </div>
                 </div>
 
-                {/* Avatar */}
                 <div className="flex-none gap-2">
                     <div className="dropdown dropdown-end">
                         <div
