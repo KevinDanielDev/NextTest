@@ -11,7 +11,6 @@ const NavBar = () => {
             modal.showModal();
         }
     };
-
     return (
         <>
             <div className="bg-black">
@@ -71,7 +70,7 @@ const NavBar = () => {
                             <div
                                 tabIndex={0}
                                 role="button"
-                                onClick={() => openModal ()}
+                                onClick={openModal}
                                 className="btn btn-circle avatar bg-white"
                             >
                                 <div className="w-8 h-8 rounded-full">

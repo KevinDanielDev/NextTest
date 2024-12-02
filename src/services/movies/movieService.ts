@@ -7,6 +7,6 @@ export async function getMovies() {
     return response.data;
   } catch (error) {
     console.error('Error fetching movies:', error);
-    throw new Error('Error fetching movies');
+    return [];
   }
 }
