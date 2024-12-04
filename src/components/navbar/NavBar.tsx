@@ -1,16 +1,21 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import LoginModal from "../auth/login/LoginModal";
+import { useState } from "react";
 
 const NavBar = () => {
-    const openModal = () => {
+    const [modalMode, setModalMode] = useState<"login" | "register">("login");
+
+    const openModal = (mode: "login" | "register") => {
+        setModalMode(mode);
         const modal = document.getElementById("my_modal_5") as HTMLDialogElement;
         if (modal) {
             modal.showModal();
         }
     };
+
     return (
         <>
             <div className="bg-black">
@@ -66,11 +71,11 @@ const NavBar = () => {
                     </div>
 
                     <div className="flex-none gap-2">
-                        <div className="dropdown dropdown-end">
+                        {/* <div className="dropdown dropdown-end">
                             <div
                                 tabIndex={0}
                                 role="button"
-                                onClick={openModal}
+                                onClick={() => openModal("login")}
                                 className="btn btn-circle avatar bg-white"
                             >
                                 <div className="w-8 h-8 rounded-full">
@@ -82,11 +87,23 @@ const NavBar = () => {
                                     />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
+                        <button
+                            className="btn btn-sm btn-yellow"
+                            onClick={() => openModal("login")}
+                        >
+                            Login
+                        </button>
+                        <button
+                            className="btn btn-sm btn-yellow"
+                            onClick={() => openModal("register")}
+                        >
+                            Register
+                        </button>
                     </div>
                 </div>
             </div>
-            <LoginModal />
+            <LoginModal mode={modalMode} />
         </>
     );
 };
