@@ -1,12 +1,11 @@
 import "react-toastify/dist/ReactToastify.css";
-import ButtonsAuth from "./ButtonsAuth";
 import InputField from "@/components/common/InputField";
 import SubmitButton from "@/components/common/SubmitButton";
 import ErrorMessage from "@/components/common/ErrorMessage";
 import useAuthForm from "@/hooks/auth/useAuthForm";
 
 interface AuthFormProps {
-    mode: "login" | "register"; // Define si es login o registro
+    mode: "login" | "register";
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
@@ -25,7 +24,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
     return (
         <div className="flex justify-center items-center">
             <div className="rounded-xl shadow-lg p-6 lg:p-8 max-w-lg w-96 text-white overflow-hidden relative">
-                <ButtonsAuth />
                 <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
                     <InputField
                         id="email"
