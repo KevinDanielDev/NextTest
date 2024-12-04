@@ -17,7 +17,14 @@ const useLoginForm = () => {
         }
         return true;
     };
-    
+
+    const closeModal = () => {
+        const modal = document.getElementById("my_modal_5") as HTMLDialogElement;
+        if (modal) {
+            modal.close();
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         if (!validate()) return;
         e.preventDefault();
@@ -27,6 +34,7 @@ const useLoginForm = () => {
         try {
             await login(state.email, state.password);
             toast.success("Login successful! Welcome!");
+            closeModal();
         } catch (err) {
             setState((prev) => ({
                 ...prev,
