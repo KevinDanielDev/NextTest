@@ -1,30 +1,42 @@
+import "react-toastify/dist/ReactToastify.css";
 import ButtonsAuth from "./ButtonsAuth";
+import useLoginForm from "@/hooks/auth/useLoginForm";
+import InputField from "@/components/common/InputField";
+import SubmitButton from "@/components/common/SubmitButton";
+import ErrorMessage from "@/components/common/ErrorMessage";
 
 const LoginForm = () => {
+    const {
+        email,
+        setEmail,
+        password,
+        setPassword,
+        error,
+        loading,
+        handleSubmit,
+    } = useLoginForm();
     return (
+         <>
         <div className="flex justify-center items-center">
             <div className="rounded-xl shadow-lg p-6 lg:p-8 max-w-lg w-96 text-white overflow-hidden relative">
-            <ButtonsAuth />
-                <form className="space-y-4 sm:space-y-6">
-                    <div>
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Email"
-                            className="input input-bordered w-full bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Password"
-                            className="input input-bordered w-full bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                        />
-                    </div>
-                    <button type="submit" className="w-full py-2 sm:py-3 bg-yellow-400 text-white font-bold rounded-lg hover:bg-yellow-500 transition" >
-                        Continue
-                    </button>
+                <ButtonsAuth />
+                <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+                    <InputField 
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                    />
+                    <InputField 
+                         id="password"
+                         type="password"
+                         value={password}
+                         onChange={(e) => setPassword(e.target.value)}
+                         placeholder="Password"
+                    />
+                    {error && <ErrorMessage message={error} />}
+                    <SubmitButton loading={loading} label="Continue" />
                 </form>
                 <p className="text-center text-xs sm:text-sm text-white mt-4">
                     For any questions, reach out to{" "}
@@ -34,7 +46,8 @@ const LoginForm = () => {
                 </p>
             </div>
         </div>
+         </>
     );
 };
 
-export default LoginForm;
+export default LoginForm
