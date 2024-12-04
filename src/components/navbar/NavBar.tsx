@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Branding from "./Branding";
 import NavLinks from "./NavLinks";
-import LoginModal from "../auth/login/LoginModal";
+import LoginModal from "../auth/AuthModal";
 import ActionButtons from "./ActionsButtons";
 import DropdownNav from "./DropDownNav";
 

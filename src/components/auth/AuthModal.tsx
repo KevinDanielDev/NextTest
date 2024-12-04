@@ -1,7 +1,7 @@
-import LoginRightSection from "./LoginRightSection";
+import LoginRightSection from "./AuthRightSection";
 import ButtonBack from "./ButtonBack";
 import { ToastContainer } from "react-toastify";
-import AuthForm from "./LoginForm";
+import AuthForm from "./AuthForm";
 
 interface IAuthModalProps {
     mode: "login" | "register";
