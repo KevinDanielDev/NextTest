@@ -1,14 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Branding from "./Branding";
 import NavLinks from "./NavLinks";
 import LoginModal from "../auth/AuthModal";
 import ActionButtons from "./ActionsButtons";
 import DropdownNav from "./DropDownNav";
+import Image from "next/image";
+import OptionsUser from "./OptionsUser";
 
 const NavBar = () => {
     const [modalMode, setModalMode] = useState<"login" | "register">("login");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showOptions, setShowOptions] = useState(false);
+
+    const checkToken = () => {
+        const token = localStorage.getItem("token");
+        setIsLoggedIn(!!token);
+    };
+
+    useEffect(() => {
+        checkToken();
+        const handleStorageChange = () => checkToken();
+        window.addEventListener("storage", handleStorageChange);
+        return () => {
+            window.removeEventListener("storage", handleStorageChange);
+        };
+    }, []);
 
     const openModal = (mode: "login" | "register") => {
         setModalMode(mode);
@@ -18,6 +36,16 @@ const NavBar = () => {
         }
     };
 
+    const toggleOptions = () => {
+        setShowOptions(!showOptions);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+        setShowOptions(false);
+    };
+
     return (
         <>
             <div className="bg-black">
@@ -25,10 +53,28 @@ const NavBar = () => {
                     <Branding />
                     <NavLinks />
                     <DropdownNav />
-                    <ActionButtons
-                        onLogin={() => openModal("login")}
-                        onRegister={() => openModal("register")}
-                    />
+                    {isLoggedIn ? (
+                        <div className="relative bg-white rounded-full flex items-center ml-auto">
+                            <Image
+                                src="/user.svg"
+                                alt="User Avatar"
+                                width={40}
+                                height={40}
+                                className="rounded-full cursor-pointer"
+                                onClick={toggleOptions}
+                            />
+                            {showOptions && (
+                                <div className="absolute top-12 right-0 rounded-md z-50">
+                                    <OptionsUser onLogout={handleLogout} />
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <ActionButtons
+                            onLogin={() => openModal("login")}
+                            onRegister={() => openModal("register")}
+                        />
+                    )}
                 </div>
             </div>
             <LoginModal mode={modalMode} />

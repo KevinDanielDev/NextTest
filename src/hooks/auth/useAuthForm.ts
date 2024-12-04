@@ -45,8 +45,11 @@ const useAuthForm = (mode: "login" | "register") => {
                 toast.success("Login successful! Welcome!");
             } else {
                 await register(state.email, state.password);
-                toast.success("Registration successful! Welcome!");
+                toast.success("Registration successful!");
             }
+
+            // Notificar a otros componentes que el token se ha actualizado
+            window.dispatchEvent(new Event("storage"));
             closeModal();
         } catch (err) {
             setState((prev) => ({
