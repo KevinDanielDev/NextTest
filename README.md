@@ -21,7 +21,12 @@ https://github.com/KevinDanielDev/NextTest.git
 npm install || npm i
 ```
 
-4. Entrar al navegador
+4. Correr proyecto
 ```
-localhost:3001
+npm run dev
+```
+
+5. Entrar al navegador
+```
+localhost:3000
 ```
