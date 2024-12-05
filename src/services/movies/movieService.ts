@@ -10,3 +10,18 @@ export async function getMovies() {
     return [];
   }
 }
+
+export async function getMovieById(id: number, token: string | null) {
+  try {
+    const response = await axiosInstance.get<IDataMovie>(`/movies/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching movie:', error);
+    return [];
+  }
+}

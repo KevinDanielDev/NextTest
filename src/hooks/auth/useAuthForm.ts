@@ -7,7 +7,6 @@ const useAuthForm = (mode: "login" | "register") => {
     const [state, setState] = useState({
         email: "",
         password: "",
-        confirmPassword: "",
         loading: false,
         error: "",
     });
@@ -15,11 +14,6 @@ const useAuthForm = (mode: "login" | "register") => {
     const validate = () => {
         if (!state.email || !state.password) {
             toast.error("Email and password are required.");
-            return false;
-        }
-
-        if (mode === "register" && state.password !== state.confirmPassword) {
-            toast.error("Passwords do not match.");
             return false;
         }
 
@@ -79,8 +73,6 @@ const useAuthForm = (mode: "login" | "register") => {
             setState((prev) => ({ ...prev, email })),
         setPassword: (password: string) =>
             setState((prev) => ({ ...prev, password })),
-        setConfirmPassword: (confirmPassword: string) =>
-            setState((prev) => ({ ...prev, confirmPassword })),
         handleSubmit,
     };
 };

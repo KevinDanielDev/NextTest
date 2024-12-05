@@ -12,12 +12,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
     const {
         email,
         password,
-        confirmPassword,
         loading,
         error,
         setEmail,
         setPassword,
-        setConfirmPassword,
         handleSubmit,
     } = useAuthForm(mode);
 
@@ -39,15 +37,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
                     />
-                    {mode === "register" && (
-                        <InputField
-                            id="confirmPassword"
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            placeholder="Confirm Password"
-                        />
-                    )}
                     {error && <ErrorMessage message={error} />}
                     <SubmitButton
                         loading={loading}

@@ -6,10 +6,9 @@ const MovieSection = ({ title, movies }: { title: string; movies: IDataMovie[] }
   return (
     <div className="mb-10">
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
-      {/* Grid responsivo */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {movies.map((movie) => (
-          <Link href={`welcome/movie/${movie.id}`} key={movie.id} passHref>
+          <Link href={`/welcome/movie/${movie.id}`} key={movie.id} passHref>
             <div
               className="bg-gray-800 rounded-lg overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105"
             >
